@@ -387,17 +387,15 @@ id: "1",
 
 */
 // Start coding here
-const newMembers = [];
-const totalMembers1 = bills
+const totalMembers = bills
   .filter((bill) => {
     return bill.member != null;
   })
-  .filter((bill) => {
-    if (!newMembers.includes(bill.member.name)) {
-      newMembers.push(bill.member.name);
-    }
-  });
-
-let totalMembers = newMembers.length;
+  .reduce((accumulator, bill) => {
+    if (!accumulator.includes(bill.member.name)) {
+      accumulator.push(bill.member.name);
+      return accumulator;
+    } else return accumulator;
+  }, []).length;
 
 console.log(totalMembers);

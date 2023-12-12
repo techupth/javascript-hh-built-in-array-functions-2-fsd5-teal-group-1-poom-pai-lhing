@@ -389,28 +389,14 @@ const bills = [
 
 // Start coding here
 
-const distinctLocation = [];
-const totalPaidByLocation = {};
-
-const location = bills
-  .map((bill) => {
-    return bill.location;
-  })
-  .filter((province) => {
-    if (!distinctLocation.includes(province)) {
-      distinctLocation.push(province);
-    }
-  });
-
-distinctLocation.map((province) => {
-  let totalBill = 0;
-  for (let i = 0; i < bills.length; i++) {
-    if (province === bills[i].location) {
-      totalBill += bills[i].total;
-    }
+const totalPaidByLocation = bills.reduce((accumulator, bill) => {
+  if (accumulator[bill.location] == undefined) {
+    accumulator[bill.location] = bill.total;
+    return accumulator;
+  } else {
+    accumulator[bill.location] += bill.total;
+    return accumulator;
   }
-
-  totalPaidByLocation[province] = totalBill;
-});
+}, {});
 
 console.log(totalPaidByLocation);
