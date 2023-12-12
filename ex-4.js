@@ -373,5 +373,31 @@ const bills = [
   },
 ];
 
+/*
+id: "1",
+    transactionDate: "2021-08-01",
+    total: 20000,
+    location: "Chonburi",
+    paymentType: "Cash",
+    member: {
+      name: "Mark",
+      age: "26",
+    },
+    pointRate: 0.01,
+
+*/
 // Start coding here
-const totalMembers;
+const newMembers = [];
+const totalMembers1 = bills
+  .filter((bill) => {
+    return bill.member != null;
+  })
+  .filter((bill) => {
+    if (!newMembers.includes(bill.member.name)) {
+      newMembers.push(bill.member.name);
+    }
+  });
+
+let totalMembers = newMembers.length;
+
+console.log(totalMembers);

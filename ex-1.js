@@ -373,4 +373,23 @@ const bills = [
   },
 ];
 
+/*{
+    id: "1",
+    transactionDate: "2021-08-01",
+    total: 20000,
+    location: "Chonburi",
+    paymentType: "Cash",
+    member: {
+      name: "Mark",
+      age: "26",
+    },
+    pointRate: 0.01,
+  }*/
+
 // Start coding here
+
+let totalBill = bills.reduce((accumulator, bill) => {
+  return (accumulator += bill.total);
+}, 0);
+
+console.log("Total bill transaction is " + totalBill);

@@ -374,5 +374,21 @@ const bills = [
 ];
 
 // Start coding here
+/*  {
+    id: "1",
+    transactionDate: "2021-08-01",
+    total: 20000,
+    location: "Chonburi",
+    paymentType: "Cash",
+    member: {
+      name: "Mark",
+      age: "26",
+    },
+    pointRate: 0.01,
+  }*/
 
-const newBills;
+const newBills = bills.filter((bill) => {
+  return bill.member !=  null
+});
+
+console.log(newBills);
