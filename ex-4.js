@@ -374,4 +374,13 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+const billMembers = bills
+  .filter((item) => {
+    return item.member !== null;
+  })
+  .map((item) => {
+    return item.member.name;
+  });
+const notSameMember = [...new Set(billMembers)];
+const totalMembers = notSameMember.length;
+console.log(`Unique Members Count: ${totalMembers}`);
