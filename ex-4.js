@@ -374,4 +374,14 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+const filtered = bills.filter((arr) => arr.member !== null);
+
+const filteredMembers = filtered.filter((obj, index, self) => {
+  const foundIndex = self.findIndex(
+    (self) => self.member.name === obj.member.name
+  ); //หา index ที่ชื่อซ้ำ
+  return foundIndex === index; //จะเจอ true แค่ครั้งแรกที่ self.member.name === obj.member.name เท่านั้น
+});
+
+const totalMembers = filteredMembers.length;
+console.log(`Unique Members Count: ${totalMembers}`);
